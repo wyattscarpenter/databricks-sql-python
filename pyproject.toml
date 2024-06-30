@@ -5,7 +5,7 @@ description = "Databricks SQL Connector for Python"
 authors = ["Databricks <databricks-sql-connector-maintainers@databricks.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-packages = [{ include = "databricks", from = "src" }]
+packages = [{ include = "databricks" }]
 include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
@@ -62,5 +62,5 @@ markers = {"reviewed" = "Test case has been reviewed by Databricks"}
 minversion = "6.0"
 log_cli = "false"
 log_cli_level = "INFO"
-testpaths = ["tests", "src/databricks/sqlalchemy/test_local"]
+testpaths = ["tests", "databricks/sqlalchemy/test_local"]
 env_files = ["test.env"]

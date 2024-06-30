@@ -153,7 +153,7 @@ See README.tests.md for details.
 This project uses [Black](https://pypi.org/project/black/).
 
 ```
-poetry run python3 -m black src --check
+poetry run python3 -m black databricks --check
 ```
 
 Remove the `--check` flag to write reformatted files to disk.
