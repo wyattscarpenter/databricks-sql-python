@@ -59,7 +59,7 @@ class Connection:
         http_path: str,
         access_token: Optional[str] = None,
         http_headers: Optional[List[Tuple[str, str]]] = None,
-        session_configuration: Dict[str, Any] = None,
+        session_configuration: Optional[Dict[str, Any]] = None,
         catalog: Optional[str] = None,
         schema: Optional[str] = None,
         _use_arrow_native_complex_types: Optional[bool] = True,
@@ -640,7 +640,7 @@ class Cursor:
             )
 
     def _handle_staging_put(
-        self, presigned_url: str, local_file: str, headers: dict = None
+        self, presigned_url: str, local_file: str, headers: Optional[dict] = None
     ):
         """Make an HTTP PUT request
 
@@ -655,7 +655,7 @@ class Cursor:
 
         # fmt: off
         # Design borrowed from: https://stackoverflow.com/a/2342589/5093960
-            
+
         OK = requests.codes.ok                  # 200
         CREATED = requests.codes.created        # 201
         ACCEPTED = requests.codes.accepted      # 202
@@ -675,7 +675,7 @@ class Cursor:
             )
 
     def _handle_staging_get(
-        self, local_file: str, presigned_url: str, headers: dict = None
+        self, local_file: str, presigned_url: str, headers: Optional[dict] = None
     ):
         """Make an HTTP GET request, create a local file with the received data
 
@@ -697,7 +697,9 @@ class Cursor:
         with open(local_file, "wb") as fp:
             fp.write(r.content)
 
-    def _handle_staging_remove(self, presigned_url: str, headers: dict = None):
+    def _handle_staging_remove(
+        self, presigned_url: str, headers: Optional[dict] = None
+    ):
         """Make an HTTP DELETE request to the presigned_url"""
 
         r = requests.delete(url=presigned_url, headers=headers)
@@ -861,7 +863,7 @@ class Cursor:
         catalog_name: Optional[str] = None,
         schema_name: Optional[str] = None,
         table_name: Optional[str] = None,
-        table_types: List[str] = None,
+        table_types: Optional[List[str]] = None,
     ) -> "Cursor":
         """
         Get tables corresponding to the catalog_name, schema_name and table_name.
