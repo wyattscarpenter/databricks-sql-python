@@ -697,7 +697,9 @@ class Cursor:
         with open(local_file, "wb") as fp:
             fp.write(r.content)
 
-    def _handle_staging_remove(self, presigned_url: str, headers: Optional[dict] = None):
+    def _handle_staging_remove(
+        self, presigned_url: str, headers: Optional[dict] = None
+    ):
         """Make an HTTP DELETE request to the presigned_url"""
 
         r = requests.delete(url=presigned_url, headers=headers)
