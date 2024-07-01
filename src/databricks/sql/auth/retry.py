@@ -222,7 +222,7 @@ class DatabricksRetryPolicy(Retry):
         urllib3_init_params.update(**urllib3_incremented_counters)
 
         # Include urllib3's current state in our __init__ params
-        databricks_init_params["urllib3_kwargs"].update(**urllib3_init_params)
+        databricks_init_params["urllib3_kwargs"] = urllib3_init_params.copy()
 
         return type(self).__private_init__(
             retry_start_time=self._retry_start_time,
