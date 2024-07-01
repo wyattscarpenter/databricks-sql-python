@@ -134,7 +134,7 @@ class CloudFetchQueue(ResultSetQueue):
         schema_bytes,
         max_download_threads: int,
         start_row_offset: int = 0,
-        result_links: List[TSparkArrowResultLink] = None,
+        result_links: Optional[List[TSparkArrowResultLink]] = None,
         lz4_compressed: bool = True,
         description: List[List[Any]] = None,
     ):
