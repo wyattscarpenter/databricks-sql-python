@@ -134,7 +134,7 @@ class CloudFetchQueue(ResultSetQueue):
         schema_bytes,
         max_download_threads: int,
         start_row_offset: int = 0,
-        result_links: List[TSparkArrowResultLink] = [],
+        result_links: List[TSparkArrowResultLink] = None,
         lz4_compressed: bool = True,
         description: List[List[Any]] = None,
     ):
@@ -161,12 +161,13 @@ class CloudFetchQueue(ResultSetQueue):
                 start_row_offset
             )
         )
-        for result_link in result_links:
-            logger.debug(
-                "- start row offset: {}, row count: {}".format(
-                    result_link.startRowOffset, result_link.rowCount
+        if result_links is not None:
+            for result_link in result_links:
+                logger.debug(
+                    "- start row offset: {}, row count: {}".format(
+                        result_link.startRowOffset, result_link.rowCount
+                    )
                 )
-            )
 
         self.download_manager = ResultFileDownloadManager(
             self.max_download_threads, self.lz4_compressed
