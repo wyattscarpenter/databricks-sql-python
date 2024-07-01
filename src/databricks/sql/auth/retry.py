@@ -162,7 +162,7 @@ class DatabricksRetryPolicy(Retry):
         new_object.command_type = command_type
         return new_object
 
-    def new(self, **urllib3_incremented_counters: typing.Any) -> Retry:
+    def new(self, **urllib3_incremented_counters: typing.Any) -> DatabricksRetryPolicy:
         """This method is responsible for passing the entire Retry state to its next iteration.
 
         urllib3 calls Retry.new() between successive requests as part of its `.increment()` method
