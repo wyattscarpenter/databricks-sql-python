@@ -7,7 +7,7 @@ from collections import OrderedDict, namedtuple
 from collections.abc import Iterable
 from decimal import Decimal
 from enum import Enum
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 import re
 
 import lz4.frame
